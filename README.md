@@ -9,9 +9,12 @@ The Pixzl Footer Editor offers different functions. You can remove elements, rep
 
 ## Installation (not available yet)
 1.  Download the plugin in the Shopware store or in the Plugin Manager in your Shopware backend.
-4.  Activate the plugin.
-5.  Configure the plugin via Plugin Manager.
+2.  Activate the plugin.
+3.  Configure the plugin via Plugin Manager.
 
 ## Manual installation
 There are two different ways of installing "Pixzl Footer Editor" manually:
 You can either checkout this repository on your machine (in the plugins folder of your Shopware 6 installation) or you can download the zip file above (latest version can be found here: [master](https://github.com/drieken/PixzlFooterEditor/archive/master.zip)) and extract this on your machine (in the very same plugins folder).
+
+## What's next
+-  Adding function to edit footer columns
