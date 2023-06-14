@@ -7,7 +7,7 @@
 ## Introduction
 The Pixzl Footer Editor is a plugin for your  Shopware-based shop and offers you different functions. You can remove elements, replace them and edit the content of the footer.
 
-## Installation (not available yet)
+## Installation
 1.  Download the plugin in the Shopware store or in the Plugin Manager in your Shopware backend.
 2.  Activate the plugin.
 3.  Configure the plugin via Plugin Manager.
