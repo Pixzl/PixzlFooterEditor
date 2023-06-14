@@ -1,0 +1,43 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{% block base_head %}
+	{{ parent() }}
+	
+	{% if config('PixzlFooterEditor.config.PixzlFooterEditorLogoActive') or config('PixzlFooterEditor.config.PixzlFooterEditorActive') %}
+		<style>
+			{% if config('PixzlFooterEditor.config.PixzlFooterEditorActive') %}
+				.footer-copyright {
+					color: {{ config('PixzlFooterEditor.config.PixzlFooterEditorTextColor') }};
+					font-size: {{ config('PixzlFooterEditor.config.PixzlFooterEditorTextSize') }}px !important;
+				}
+				.footer-copyright a {
+					color: {{ config('PixzlFooterEditor.config.PixzlFooterEditorLinkColor') }} !important;
+					font-size: {{ config('PixzlFooterEditor.config.PixzlFooterEditorTextSize') }}px !important;
+				}
+				.footer-copyright a:hover {
+					color: {{ config('PixzlFooterEditor.config.PixzlFooterEditorLinkColor') }} !important;
+					opacity: 0.75;
+				}
+				.footer-vat {
+					font-size: {{ config('PixzlFooterEditor.config.PixzlFooterEditorTextSizeVATNotice') }}px !important;
+				}
+				
+				
+			{% endif %}
+			{% if config('PixzlFooterEditor.config.PixzlFooterEditorLogoActive') %}
+				.footer-copyright-logo {
+					text-align: center;
+					margin: 30px 0 15px 0;
+				}
+				.footer-copyright-logo div {
+					display: inline-block;
+				}
+				.footer-copyright-logo img {
+					width: {{ config('PixzlFooterEditor.config.PixzlFooterEditorLogoWidth') }}px;
+				}
+			{% endif %}
+		
+		</style>
+	{% endif %}
+
+{% endblock %}

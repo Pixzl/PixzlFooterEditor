@@ -1,0 +1,29 @@
+{% sw_extends '@Storefront/storefront/layout/footer/footer.html.twig' %}
+
+{% block layout_footer_copyright %}
+	{% if config('PixzlFooterEditor.config.PixzlFooterEditorLogoActive') or config('PixzlFooterEditor.config.PixzlFooterEditorActive') %}
+
+		{% if config('PixzlFooterEditor.config.PixzlFooterEditorLogoActive') %}
+			<div class="footer-copyright-logo">
+				{% sw_include '@Storefront/storefront/layout/header/logo.html.twig' %}
+			</div>
+			
+		{% endif %}
+		
+		{% if config('PixzlFooterEditor.config.PixzlFooterEditorActive') %}
+			<div class="footer-copyright">
+				<p>&#169; {{ 'now' | date('Y') }} {{ config('PixzlFooterEditor.config.PixzlFooterEditorValue')|raw }} {% if twtLicensekey is defined %}Theme by {{ 'twt.pixzl'|trans({'%href%': 'https://www.pixzl.de','%title%': 'Shopware Theme','%name%': 'Pixzl'})|raw }}{% endif %}</p>
+		</div>
+			
+		{% else %}
+		
+			{% if twtLicensekey is defined %}
+				<div class="footer-copyright">
+					<p>Theme by {{ 'twt.pixzl'|trans({'%href%': 'https://www.pixzl.de','%title%': 'Shopware Theme','%name%': 'Pixzl'})|raw }}</p>
+				</div>
+			{% endif %}
+			
+		{% endif %}
+
+	{% endif %}
+{% endblock %}

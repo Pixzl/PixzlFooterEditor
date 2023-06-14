@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+	<card>
+        <title>Settings</title>
+        <title lang="de-DE">Einstellungen</title>
+
+        <input-field type="bool">
+            <name>PixzlFooterEditorActive</name>
+            <defaultValue>true</defaultValue>
+            <label>Show copyright notice in footer</label>
+            <label lang="de-DE">Copyright Hinweis im Footer anzeigen</label>
+            <helpText>Should the copyright notice in the theme be hidden or displayed with its own content?</helpText>
+            <helpText lang="de-DE">Soll der Copyright Hinweis im Theme ausgeblendet oder mit eigenem Inhalt angezeigt werden?</helpText>
+        </input-field>
+
+        <input-field type="text">
+            <name>PixzlFooterEditorValue</name>
+            <required>true</required>
+            <defaultValue>Dein Copyright Hinweis.</defaultValue>
+            <label>Content of the copyright line</label>
+            <label lang="de-DE">Inhalt des Copyright Hinweises</label>
+				<helpText>Paste the content for the copyright notice here.</helpText>
+            <helpText lang="de-DE">Füge den Inhalt für den Copyright Hinweis hier ein.</helpText>
+        </input-field>
+
+        <input-field type="colorpicker">
+            <name>PixzlFooterEditorTextColor</name>
+            <required>true</required>
+            <defaultValue>#000</defaultValue>
+            <label>Color of the Text</label>
+            <label lang="de-DE">Farbe des Textes</label>
+        </input-field>
+		 
+        <input-field type="colorpicker">
+            <name>PixzlFooterEditorLinkColor</name>
+            <required>true</required>
+            <defaultValue>#FFF</defaultValue>
+            <label>Color of The Link</label>
+            <label lang="de-DE">Farbe des Links</label>
+        </input-field>
+        
+        <input-field type="int">
+            <name>PixzlFooterEditorTextSize</name>
+            <required>true</required>
+            <defaultValue>16</defaultValue>
+            <label>Copyright Notice Text Size</label>
+            <label lang="de-DE">Textgröße Copyright Hinweis</label>
+            <helpText>Enter the Text size of the Copyright notice.</helpText>
+            <helpText lang="de-DE">Textgröße für den Copyright Hinweis eingeben.</helpText>
+        </input-field>
+        
+        
+        <input-field type="int">
+            <name>PixzlFooterEditorTextSizeVATNotice</name>
+            <required>true</required>
+            <defaultValue>16</defaultValue>
+            <label>VAT Notice Text Size</label>
+            <label lang="de-DE">Textgröße Mehrwertsteuer Hinweis</label>
+            <helpText>Enter the Text size of the VAT notice.</helpText>
+            <helpText lang="de-DE">Textgröße für den Mehrwertsteuer Hinweis eingeben.</helpText>
+        </input-field>
+            
+            
+        <input-field type="bool">
+            <name>PixzlFooterEditorLogoActive</name>
+            <required>true</required>
+            <defaultValue>false</defaultValue>
+            <label>Display the shop's logo above the copyright notice</label>
+            <label lang="de-DE">Logo des Shops über dem Copyright Hinweis anzeigen</label>
+            <helpText>If this setting is active, the shop's logo is placed and displayed above the copyright notice.</helpText>
+            <helpText lang="de-DE">Wenn diese Einstellung aktiv, wird das Logo des Shops über dem Copyright Hinweis platziert und angezeigt.</helpText>
+        </input-field>
+             
+        <input-field type="int">
+            <name>PixzlFooterEditorLogoWidth</name>
+            <required>true</required>
+            <defaultValue>250</defaultValue>
+            <label>Logo width in Pixel</label>
+            <label lang="de-DE">Breite des Logos in Pixel</label>
+            <helpText>Please enter the width of the logo in pixels.</helpText>
+            <helpText lang="de-DE">Bitte die breite des Logos in Pixel angeben.</helpText>
+        </input-field>
+    </card>
+	
+    
+</config>

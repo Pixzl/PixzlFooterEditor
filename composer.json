@@ -1,0 +1,63 @@
+{
+	"name": "pixzl/footereditor",
+	"description": "The easiest way to edit the footer of your Shopware 6 theme.",
+	"keywords": [
+		"Shopware",
+		"Pixzl",
+		"Footer"
+	],
+	
+	"version": "v1.0.1",
+	"type": "shopware-platform-plugin",
+	"license": "MIT",
+	"authors": [
+		{
+		  "name": "Pixzl",
+		  "homepage": "https://www.pixzl.de"
+		}
+	],
+	
+	"require": {
+		"shopware/core": "6.5.*"
+	},
+	
+	"extra": {
+		"shopware-plugin-class": "PixzlFooterEditor\\PixzlFooterEditor",
+		"plugin-icon": "src/Resources/config/icon.jpg",
+		"copyright": "(c) by Pixzl",
+		"label": {
+			"en-GB": "Pixzl Footer Editor",
+			"de-DE": "Pixzl Footer Editor"
+		},
+		"description": {
+			"en-GB": "The easiest way to edit the footer of your Shopware 6 theme.",
+			"de-DE": "Der einfachste Weg den Footer deines Shopware 6 Themes zu bearbeiten."
+		},
+		"manufacturerLink": {
+			"en-GB": "https://www.pixzl.de",
+			"de-DE": "https://www.pixzl.de"
+		},
+		"supportLink": {
+			"en-GB": "https://www.pixzl.de",
+			"de-DE": "https://www.pixzl.de"
+		}
+	},
+	
+	"minimum-stability": "stable",
+	"autoload": {
+		"psr-4": {
+			"PixzlFooterEditor\\": "src/"
+		}
+	},
+	
+	"suggest": {
+			"shopware/storefront": "Require '6.5'.",
+			"shopware/administration": "Require '6.5'. Allows you to to set up the plugin easily"
+	},
+	
+	"conflict": {
+			"shopware/storefront": "<6,>=7",
+			"shopware/administration": "<6,>=7"
+	}
+	
+}
