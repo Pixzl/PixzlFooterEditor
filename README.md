@@ -1,5 +1,5 @@
 <p align="center">
-   <img src="/.github/assets/logo.png">
+   <img src="/github/assets/logo.png">
 </p>
 
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/Pixzl/PixzlFooterEditor)
