@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question or discussion
+    url: https://github.com/Pixzl/PixzlFooterEditor/discussions
+    about: For open-ended questions about config, theme integration, or "is this the right plugin for my shop?".
+  - name: Security vulnerability
+    url: https://github.com/Pixzl/PixzlFooterEditor/security/advisories/new
+    about: Please do NOT open a public issue. Use GitHub's private vulnerability reporting.

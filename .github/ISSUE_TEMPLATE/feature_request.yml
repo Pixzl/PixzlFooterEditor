@@ -1,0 +1,25 @@
+name: Feature request
+description: Suggest a footer capability or polish.
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem are you trying to solve?
+      description: Concrete shopkeeper / customer use case — what would change in your day if this existed?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Sketch the config field(s) or theme-block API. Twig snippet welcome.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Workarounds you tried, theme overrides, other plugins.

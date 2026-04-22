@@ -1,0 +1,70 @@
+name: Bug report
+description: Something doesn't work in a Shopware shop with this plugin installed.
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      placeholder: After enabling "Show shop logo above copyright", the logo renders 1px wide.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Configure → Settings → enable shop logo
+        2. Set logo width to 200
+        3. Reload storefront → logo is 1px
+    validations:
+      required: true
+
+  - type: input
+    id: plugin-version
+    attributes:
+      label: Plugin version
+      placeholder: e.g. 2.0.0
+    validations:
+      required: true
+
+  - type: input
+    id: shopware-version
+    attributes:
+      label: Shopware version
+      placeholder: e.g. 6.6.5
+    validations:
+      required: true
+
+  - type: input
+    id: php-version
+    attributes:
+      label: PHP version
+      placeholder: e.g. 8.3.10
+
+  - type: input
+    id: theme
+    attributes:
+      label: Theme
+      description: The active storefront theme. Default Shopware theme, custom theme, or third-party?
+      placeholder: e.g. Storefront (default), Custom-Foo
+
+  - type: textarea
+    id: config
+    attributes:
+      label: Relevant config (sales-channel scope + values)
+      description: Which sales channel, which fields differ from default
+      render: yaml
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Screenshots / `var/log/*.log` excerpt / browser console
