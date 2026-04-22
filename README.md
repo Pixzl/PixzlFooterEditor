@@ -1,6 +1,4 @@
 <div align="center">
-  <img src="github/assets/logo.png" alt="Pixzl Footer Editor" width="560">
-
   <h1>Pixzl Footer Editor</h1>
 
   <p><strong>Own your Shopware 6 footer. Without touching a single line of Twig.</strong></p>
