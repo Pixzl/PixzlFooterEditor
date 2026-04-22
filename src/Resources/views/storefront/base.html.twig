@@ -1,43 +1,136 @@
 {% sw_extends '@Storefront/storefront/base.html.twig' %}
 
 {% block base_head %}
-	{{ parent() }}
-	
-	{% if config('PixzlFooterEditor.config.PixzlFooterEditorLogoActive') or config('PixzlFooterEditor.config.PixzlFooterEditorActive') %}
-		<style>
-			{% if config('PixzlFooterEditor.config.PixzlFooterEditorActive') %}
-				.footer-copyright {
-					color: {{ config('PixzlFooterEditor.config.PixzlFooterEditorTextColor') }};
-					font-size: {{ config('PixzlFooterEditor.config.PixzlFooterEditorTextSize') }}px !important;
-				}
-				.footer-copyright a {
-					color: {{ config('PixzlFooterEditor.config.PixzlFooterEditorLinkColor') }} !important;
-					font-size: {{ config('PixzlFooterEditor.config.PixzlFooterEditorTextSize') }}px !important;
-				}
-				.footer-copyright a:hover {
-					color: {{ config('PixzlFooterEditor.config.PixzlFooterEditorLinkColor') }} !important;
-					opacity: 0.75;
-				}
-				.footer-vat {
-					font-size: {{ config('PixzlFooterEditor.config.PixzlFooterEditorTextSizeVATNotice') }}px !important;
-				}
-				
-				
-			{% endif %}
-			{% if config('PixzlFooterEditor.config.PixzlFooterEditorLogoActive') %}
-				.footer-copyright-logo {
-					text-align: center;
-					margin: 30px 0 15px 0;
-				}
-				.footer-copyright-logo div {
-					display: inline-block;
-				}
-				.footer-copyright-logo img {
-					width: {{ config('PixzlFooterEditor.config.PixzlFooterEditorLogoWidth') }}px;
-				}
-			{% endif %}
-		
-		</style>
-	{% endif %}
+    {{ parent() }}
 
+    {% set pfe_active         = config('PixzlFooterEditor.config.PixzlFooterEditorActive') %}
+    {% set pfe_logo_active    = config('PixzlFooterEditor.config.PixzlFooterEditorLogoActive') %}
+    {% set pfe_social_active  = config('PixzlFooterEditor.config.PixzlFooterEditorSocialActive') %}
+    {% set pfe_payment_active = config('PixzlFooterEditor.config.PixzlFooterEditorPaymentIconsActive') %}
+    {% set pfe_shipping_active= config('PixzlFooterEditor.config.PixzlFooterEditorShippingIconsActive') %}
+
+    {% if pfe_active or pfe_logo_active or pfe_social_active or pfe_payment_active or pfe_shipping_active %}
+        <style>
+            {% if pfe_active %}
+                {% set text_color  = config('PixzlFooterEditor.config.PixzlFooterEditorTextColor')|default('#000000')|e('css') %}
+                {% set link_color  = config('PixzlFooterEditor.config.PixzlFooterEditorLinkColor')|default('#ffffff')|e('css') %}
+                {% set text_size   = (config('PixzlFooterEditor.config.PixzlFooterEditorTextSize')|default(16))|abs %}
+                {% set vat_size    = (config('PixzlFooterEditor.config.PixzlFooterEditorTextSizeVATNotice')|default(16))|abs %}
+                .footer-copyright {
+                    color: {{ text_color }};
+                    font-size: {{ text_size }}px !important;
+                }
+                .footer-copyright a {
+                    color: {{ link_color }} !important;
+                    font-size: {{ text_size }}px !important;
+                }
+                .footer-copyright a:hover {
+                    color: {{ link_color }} !important;
+                    opacity: 0.75;
+                }
+                .footer-vat {
+                    font-size: {{ vat_size }}px !important;
+                }
+            {% endif %}
+
+            {% if pfe_logo_active %}
+                {% set logo_width = (config('PixzlFooterEditor.config.PixzlFooterEditorLogoWidth')|default(250))|abs %}
+                .footer-copyright-logo {
+                    text-align: center;
+                    margin: 30px 0 15px 0;
+                }
+                .footer-copyright-logo div {
+                    display: inline-block;
+                }
+                .footer-copyright-logo img {
+                    width: {{ logo_width }}px;
+                    height: auto;
+                }
+            {% endif %}
+
+            {% if pfe_social_active %}
+                {% set icon_color = config('PixzlFooterEditor.config.PixzlFooterEditorSocialIconColor')|default('#ffffff')|e('css') %}
+                {% set icon_size  = (config('PixzlFooterEditor.config.PixzlFooterEditorSocialIconSize')|default(24))|abs %}
+                .pixzl-footer-social {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 16px;
+                    margin: 20px 0;
+                    padding: 0;
+                    list-style: none;
+                }
+                .pixzl-footer-social-heading {
+                    width: 100%;
+                    text-align: center;
+                    margin-bottom: 8px;
+                    font-weight: 600;
+                }
+                .pixzl-footer-social a {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: {{ icon_color }};
+                    text-decoration: none;
+                    transition: opacity .2s ease;
+                }
+                .pixzl-footer-social a:hover,
+                .pixzl-footer-social a:focus {
+                    color: {{ icon_color }};
+                    opacity: 0.75;
+                }
+                .pixzl-footer-social a svg,
+                .pixzl-footer-social a i::before {
+                    width: {{ icon_size }}px;
+                    height: {{ icon_size }}px;
+                    font-size: {{ icon_size }}px;
+                    line-height: 1;
+                }
+            {% endif %}
+
+            {% if pfe_payment_active or pfe_shipping_active %}
+                {% set icon_max_h = (config('PixzlFooterEditor.config.PixzlFooterEditorIconsMaxHeight')|default(32))|abs %}
+                .pixzl-footer-icons {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 12px;
+                    margin: 15px 0;
+                    padding: 0;
+                    list-style: none;
+                }
+                .pixzl-footer-icons-heading {
+                    width: 100%;
+                    text-align: center;
+                    margin-bottom: 6px;
+                    font-weight: 600;
+                    font-size: 0.9em;
+                }
+                .pixzl-footer-icons img,
+                .pixzl-footer-icons svg {
+                    max-height: {{ icon_max_h }}px;
+                    width: auto;
+                    display: block;
+                }
+                .pixzl-footer-icons .pixzl-footer-icon-badge {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    min-width: 48px;
+                    height: {{ icon_max_h }}px;
+                    padding: 0 10px;
+                    border: 1px solid rgba(0, 0, 0, .15);
+                    border-radius: 4px;
+                    background: #fff;
+                    color: #333;
+                    font-size: 0.8em;
+                    font-weight: 600;
+                    line-height: 1;
+                    white-space: nowrap;
+                }
+            {% endif %}
+        </style>
+    {% endif %}
 {% endblock %}

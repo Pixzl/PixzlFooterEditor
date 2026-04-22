@@ -1,0 +1,43 @@
+{
+    "pixzl-footer": {
+        "social": {
+            "followUs": "Follow us",
+            "ariaLabel": {
+                "facebook": "Visit us on Facebook",
+                "instagram": "Visit us on Instagram",
+                "linkedin": "Visit us on LinkedIn",
+                "youtube": "Visit us on YouTube",
+                "tiktok": "Visit us on TikTok",
+                "x": "Visit us on X",
+                "pinterest": "Visit us on Pinterest"
+            }
+        },
+        "payment": {
+            "heading": "Payment methods",
+            "alt": {
+                "visa": "Visa",
+                "mastercard": "Mastercard",
+                "amex": "American Express",
+                "paypal": "PayPal",
+                "klarna": "Klarna",
+                "sepa": "SEPA Direct Debit",
+                "sofort": "Sofort",
+                "applepay": "Apple Pay",
+                "googlepay": "Google Pay",
+                "invoice": "Purchase on invoice"
+            }
+        },
+        "shipping": {
+            "heading": "Shipping",
+            "alt": {
+                "dhl": "DHL",
+                "dpd": "DPD",
+                "ups": "UPS",
+                "hermes": "Hermes",
+                "gls": "GLS",
+                "fedex": "FedEx",
+                "post": "Deutsche Post"
+            }
+        }
+    }
+}

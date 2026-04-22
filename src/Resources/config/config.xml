@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
-	<card>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
         <title>Settings</title>
         <title lang="de-DE">Einstellungen</title>
 
@@ -15,72 +17,267 @@
 
         <input-field type="text">
             <name>PixzlFooterEditorValue</name>
-            <required>true</required>
-            <defaultValue>Dein Copyright Hinweis.</defaultValue>
+            <defaultValue>Your copyright notice.</defaultValue>
             <label>Content of the copyright line</label>
             <label lang="de-DE">Inhalt des Copyright Hinweises</label>
-				<helpText>Paste the content for the copyright notice here.</helpText>
-            <helpText lang="de-DE">Füge den Inhalt für den Copyright Hinweis hier ein.</helpText>
+            <helpText>Plain text only. HTML is escaped by default for security — enable "Allow HTML" below if you need to embed links or markup.</helpText>
+            <helpText lang="de-DE">Nur Klartext. HTML wird aus Sicherheitsgründen per Default escaped — aktiviere unten "HTML erlauben", wenn Links oder Markup benötigt werden.</helpText>
+        </input-field>
+
+        <input-field type="bool">
+            <name>PixzlFooterEditorValueAllowHtml</name>
+            <defaultValue>false</defaultValue>
+            <label>Allow HTML in copyright text</label>
+            <label lang="de-DE">HTML im Copyright-Text erlauben</label>
+            <helpText>When enabled, the copyright text is rendered as HTML (e.g. &lt;a href&gt; links). Only enable if you trust the source of this text — HTML is not sanitized.</helpText>
+            <helpText lang="de-DE">Wenn aktiviert, wird der Copyright-Text als HTML gerendert (z.B. &lt;a href&gt;-Links). Nur aktivieren, wenn du dem Inhalt vertraust — HTML wird nicht bereinigt.</helpText>
         </input-field>
 
         <input-field type="colorpicker">
             <name>PixzlFooterEditorTextColor</name>
-            <required>true</required>
-            <defaultValue>#000</defaultValue>
-            <label>Color of the Text</label>
+            <defaultValue>#000000</defaultValue>
+            <label>Color of the text</label>
             <label lang="de-DE">Farbe des Textes</label>
         </input-field>
-		 
+
         <input-field type="colorpicker">
             <name>PixzlFooterEditorLinkColor</name>
-            <required>true</required>
-            <defaultValue>#FFF</defaultValue>
-            <label>Color of The Link</label>
+            <defaultValue>#ffffff</defaultValue>
+            <label>Color of the link</label>
             <label lang="de-DE">Farbe des Links</label>
         </input-field>
-        
+
         <input-field type="int">
             <name>PixzlFooterEditorTextSize</name>
-            <required>true</required>
             <defaultValue>16</defaultValue>
-            <label>Copyright Notice Text Size</label>
-            <label lang="de-DE">Textgröße Copyright Hinweis</label>
-            <helpText>Enter the Text size of the Copyright notice.</helpText>
-            <helpText lang="de-DE">Textgröße für den Copyright Hinweis eingeben.</helpText>
+            <label>Copyright notice text size (px)</label>
+            <label lang="de-DE">Textgröße Copyright Hinweis (px)</label>
+            <helpText>Enter the text size of the copyright notice in pixels.</helpText>
+            <helpText lang="de-DE">Textgröße für den Copyright Hinweis in Pixeln.</helpText>
         </input-field>
-        
-        
+
         <input-field type="int">
             <name>PixzlFooterEditorTextSizeVATNotice</name>
-            <required>true</required>
             <defaultValue>16</defaultValue>
-            <label>VAT Notice Text Size</label>
-            <label lang="de-DE">Textgröße Mehrwertsteuer Hinweis</label>
-            <helpText>Enter the Text size of the VAT notice.</helpText>
-            <helpText lang="de-DE">Textgröße für den Mehrwertsteuer Hinweis eingeben.</helpText>
+            <label>VAT notice text size (px)</label>
+            <label lang="de-DE">Textgröße Mehrwertsteuer Hinweis (px)</label>
+            <helpText>Enter the text size of the VAT notice in pixels.</helpText>
+            <helpText lang="de-DE">Textgröße für den Mehrwertsteuer Hinweis in Pixeln.</helpText>
         </input-field>
-            
-            
+
         <input-field type="bool">
             <name>PixzlFooterEditorLogoActive</name>
-            <required>true</required>
             <defaultValue>false</defaultValue>
             <label>Display the shop's logo above the copyright notice</label>
             <label lang="de-DE">Logo des Shops über dem Copyright Hinweis anzeigen</label>
-            <helpText>If this setting is active, the shop's logo is placed and displayed above the copyright notice.</helpText>
-            <helpText lang="de-DE">Wenn diese Einstellung aktiv, wird das Logo des Shops über dem Copyright Hinweis platziert und angezeigt.</helpText>
+            <helpText>If active, the shop's logo is placed above the copyright notice.</helpText>
+            <helpText lang="de-DE">Wenn aktiv, wird das Logo des Shops über dem Copyright Hinweis angezeigt.</helpText>
         </input-field>
-             
+
         <input-field type="int">
             <name>PixzlFooterEditorLogoWidth</name>
-            <required>true</required>
             <defaultValue>250</defaultValue>
-            <label>Logo width in Pixel</label>
+            <label>Logo width in pixels</label>
             <label lang="de-DE">Breite des Logos in Pixel</label>
-            <helpText>Please enter the width of the logo in pixels.</helpText>
-            <helpText lang="de-DE">Bitte die breite des Logos in Pixel angeben.</helpText>
+            <helpText>Width of the logo in pixels.</helpText>
+            <helpText lang="de-DE">Breite des Logos in Pixeln.</helpText>
         </input-field>
     </card>
-	
-    
+
+    <card>
+        <title>Social Media</title>
+        <title lang="de-DE">Soziale Medien</title>
+
+        <input-field type="bool">
+            <name>PixzlFooterEditorSocialActive</name>
+            <defaultValue>false</defaultValue>
+            <label>Show social media links in footer</label>
+            <label lang="de-DE">Social-Media-Links im Footer anzeigen</label>
+            <helpText>Display the social media icon row. Only icons with a non-empty URL are rendered.</helpText>
+            <helpText lang="de-DE">Zeigt die Social-Media-Icon-Reihe an. Nur Icons mit einer ausgefüllten URL werden gerendert.</helpText>
+        </input-field>
+
+        <input-field type="text">
+            <name>PixzlFooterEditorSocialHeading</name>
+            <defaultValue>Follow us</defaultValue>
+            <label>Heading above social icons (leave empty to hide)</label>
+            <label lang="de-DE">Überschrift über den Icons (leer = ausblenden)</label>
+        </input-field>
+
+        <input-field type="url">
+            <name>PixzlFooterEditorSocialFacebook</name>
+            <placeholder>https://www.facebook.com/yourshop</placeholder>
+            <label>Facebook URL</label>
+            <label lang="de-DE">Facebook-URL</label>
+        </input-field>
+
+        <input-field type="url">
+            <name>PixzlFooterEditorSocialInstagram</name>
+            <placeholder>https://www.instagram.com/yourshop</placeholder>
+            <label>Instagram URL</label>
+            <label lang="de-DE">Instagram-URL</label>
+        </input-field>
+
+        <input-field type="url">
+            <name>PixzlFooterEditorSocialLinkedIn</name>
+            <placeholder>https://www.linkedin.com/company/yourshop</placeholder>
+            <label>LinkedIn URL</label>
+            <label lang="de-DE">LinkedIn-URL</label>
+        </input-field>
+
+        <input-field type="url">
+            <name>PixzlFooterEditorSocialYouTube</name>
+            <placeholder>https://www.youtube.com/@yourshop</placeholder>
+            <label>YouTube URL</label>
+            <label lang="de-DE">YouTube-URL</label>
+        </input-field>
+
+        <input-field type="url">
+            <name>PixzlFooterEditorSocialTikTok</name>
+            <placeholder>https://www.tiktok.com/@yourshop</placeholder>
+            <label>TikTok URL</label>
+            <label lang="de-DE">TikTok-URL</label>
+        </input-field>
+
+        <input-field type="url">
+            <name>PixzlFooterEditorSocialX</name>
+            <placeholder>https://x.com/yourshop</placeholder>
+            <label>X (Twitter) URL</label>
+            <label lang="de-DE">X (Twitter)-URL</label>
+        </input-field>
+
+        <input-field type="url">
+            <name>PixzlFooterEditorSocialPinterest</name>
+            <placeholder>https://www.pinterest.com/yourshop</placeholder>
+            <label>Pinterest URL</label>
+            <label lang="de-DE">Pinterest-URL</label>
+        </input-field>
+
+        <input-field type="colorpicker">
+            <name>PixzlFooterEditorSocialIconColor</name>
+            <defaultValue>#ffffff</defaultValue>
+            <label>Icon color</label>
+            <label lang="de-DE">Icon-Farbe</label>
+        </input-field>
+
+        <input-field type="int">
+            <name>PixzlFooterEditorSocialIconSize</name>
+            <defaultValue>24</defaultValue>
+            <label>Icon size (px)</label>
+            <label lang="de-DE">Icon-Größe (px)</label>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Payment &amp; Shipping Icons</title>
+        <title lang="de-DE">Zahlarten- &amp; Versand-Icons</title>
+
+        <input-field type="bool">
+            <name>PixzlFooterEditorPaymentIconsActive</name>
+            <defaultValue>false</defaultValue>
+            <label>Show payment method icons</label>
+            <label lang="de-DE">Zahlarten-Icons anzeigen</label>
+        </input-field>
+
+        <component name="sw-multi-select">
+            <name>PixzlFooterEditorPaymentIcons</name>
+            <label>Payment methods to display</label>
+            <label lang="de-DE">Anzuzeigende Zahlarten</label>
+            <options>
+                <option>
+                    <id>visa</id>
+                    <name>Visa</name>
+                </option>
+                <option>
+                    <id>mastercard</id>
+                    <name>Mastercard</name>
+                </option>
+                <option>
+                    <id>amex</id>
+                    <name>American Express</name>
+                </option>
+                <option>
+                    <id>paypal</id>
+                    <name>PayPal</name>
+                </option>
+                <option>
+                    <id>klarna</id>
+                    <name>Klarna</name>
+                </option>
+                <option>
+                    <id>sepa</id>
+                    <name>SEPA</name>
+                </option>
+                <option>
+                    <id>sofort</id>
+                    <name>Sofortüberweisung</name>
+                </option>
+                <option>
+                    <id>applepay</id>
+                    <name>Apple Pay</name>
+                </option>
+                <option>
+                    <id>googlepay</id>
+                    <name>Google Pay</name>
+                </option>
+                <option>
+                    <id>invoice</id>
+                    <name>Invoice / Rechnung</name>
+                </option>
+            </options>
+        </component>
+
+        <input-field type="bool">
+            <name>PixzlFooterEditorShippingIconsActive</name>
+            <defaultValue>false</defaultValue>
+            <label>Show shipping provider icons</label>
+            <label lang="de-DE">Versanddienstleister-Icons anzeigen</label>
+        </input-field>
+
+        <component name="sw-multi-select">
+            <name>PixzlFooterEditorShippingIcons</name>
+            <label>Shipping providers to display</label>
+            <label lang="de-DE">Anzuzeigende Versanddienstleister</label>
+            <options>
+                <option>
+                    <id>dhl</id>
+                    <name>DHL</name>
+                </option>
+                <option>
+                    <id>dpd</id>
+                    <name>DPD</name>
+                </option>
+                <option>
+                    <id>ups</id>
+                    <name>UPS</name>
+                </option>
+                <option>
+                    <id>hermes</id>
+                    <name>Hermes</name>
+                </option>
+                <option>
+                    <id>gls</id>
+                    <name>GLS</name>
+                </option>
+                <option>
+                    <id>fedex</id>
+                    <name>FedEx</name>
+                </option>
+                <option>
+                    <id>post</id>
+                    <name>Deutsche Post</name>
+                </option>
+            </options>
+        </component>
+
+        <input-field type="int">
+            <name>PixzlFooterEditorIconsMaxHeight</name>
+            <defaultValue>32</defaultValue>
+            <label>Maximum icon height (px)</label>
+            <label lang="de-DE">Maximale Icon-Höhe (px)</label>
+            <helpText>Applies to both payment and shipping icons.</helpText>
+            <helpText lang="de-DE">Gilt für Zahlarten- und Versand-Icons.</helpText>
+        </input-field>
+    </card>
+
 </config>

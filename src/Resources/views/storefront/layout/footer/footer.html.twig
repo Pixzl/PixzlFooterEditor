@@ -1,29 +1,140 @@
 {% sw_extends '@Storefront/storefront/layout/footer/footer.html.twig' %}
 
 {% block layout_footer_copyright %}
-	{% if config('PixzlFooterEditor.config.PixzlFooterEditorLogoActive') or config('PixzlFooterEditor.config.PixzlFooterEditorActive') %}
+    {% set pfe_active          = config('PixzlFooterEditor.config.PixzlFooterEditorActive') %}
+    {% set pfe_logo_active     = config('PixzlFooterEditor.config.PixzlFooterEditorLogoActive') %}
+    {% set pfe_social_active   = config('PixzlFooterEditor.config.PixzlFooterEditorSocialActive') %}
+    {% set pfe_payment_active  = config('PixzlFooterEditor.config.PixzlFooterEditorPaymentIconsActive') %}
+    {% set pfe_shipping_active = config('PixzlFooterEditor.config.PixzlFooterEditorShippingIconsActive') %}
+    {% set pfe_any_active      = pfe_active or pfe_logo_active or pfe_social_active or pfe_payment_active or pfe_shipping_active %}
 
-		{% if config('PixzlFooterEditor.config.PixzlFooterEditorLogoActive') %}
-			<div class="footer-copyright-logo">
-				{% sw_include '@Storefront/storefront/layout/header/logo.html.twig' %}
-			</div>
-			
-		{% endif %}
-		
-		{% if config('PixzlFooterEditor.config.PixzlFooterEditorActive') %}
-			<div class="footer-copyright">
-				<p>&#169; {{ 'now' | date('Y') }} {{ config('PixzlFooterEditor.config.PixzlFooterEditorValue')|raw }} {% if twtLicensekey is defined %}Theme by {{ 'twt.pixzl'|trans({'%href%': 'https://www.pixzl.de','%title%': 'Shopware Theme','%name%': 'Pixzl'})|raw }}{% endif %}</p>
-		</div>
-			
-		{% else %}
-		
-			{% if twtLicensekey is defined %}
-				<div class="footer-copyright">
-					<p>Theme by {{ 'twt.pixzl'|trans({'%href%': 'https://www.pixzl.de','%title%': 'Shopware Theme','%name%': 'Pixzl'})|raw }}</p>
-				</div>
-			{% endif %}
-			
-		{% endif %}
+    {% if not pfe_any_active %}
+        {{ parent() }}
+    {% else %}
 
-	{% endif %}
+        {% block pixzl_footer_logo %}
+            {% if pfe_logo_active %}
+                <div class="footer-copyright-logo">
+                    {% sw_include '@Storefront/storefront/layout/header/logo.html.twig' %}
+                </div>
+            {% endif %}
+        {% endblock %}
+
+        {% block pixzl_footer_social %}
+            {% if pfe_social_active %}
+                {% set social_links = {
+                    facebook:  config('PixzlFooterEditor.config.PixzlFooterEditorSocialFacebook'),
+                    instagram: config('PixzlFooterEditor.config.PixzlFooterEditorSocialInstagram'),
+                    linkedin:  config('PixzlFooterEditor.config.PixzlFooterEditorSocialLinkedIn'),
+                    youtube:   config('PixzlFooterEditor.config.PixzlFooterEditorSocialYouTube'),
+                    tiktok:    config('PixzlFooterEditor.config.PixzlFooterEditorSocialTikTok'),
+                    x:         config('PixzlFooterEditor.config.PixzlFooterEditorSocialX'),
+                    pinterest: config('PixzlFooterEditor.config.PixzlFooterEditorSocialPinterest')
+                } %}
+                {% set social_icons = {
+                    facebook:  'facebook',
+                    instagram: 'instagram',
+                    linkedin:  'linkedin',
+                    youtube:   'youtube',
+                    tiktok:    'tiktok',
+                    x:         'twitter-x',
+                    pinterest: 'pinterest'
+                } %}
+                {% set heading = config('PixzlFooterEditor.config.PixzlFooterEditorSocialHeading') %}
+                {% set any_link = false %}
+                {% for url in social_links %}{% if url|trim is not empty %}{% set any_link = true %}{% endif %}{% endfor %}
+
+                {% if any_link %}
+                    <div class="pixzl-footer-social-wrapper">
+                        {% if heading|trim is not empty %}
+                            <div class="pixzl-footer-social-heading">{{ heading }}</div>
+                        {% endif %}
+                        <ul class="pixzl-footer-social">
+                            {% for network, url in social_links %}
+                                {% if url|trim is not empty %}
+                                    {% set aria = ('pixzl-footer.social.ariaLabel.' ~ network)|trans({}, 'messages') %}
+                                    <li>
+                                        <a href="{{ url }}"
+                                           target="_blank"
+                                           rel="noopener noreferrer"
+                                           aria-label="{{ aria }}"
+                                           title="{{ aria }}">
+                                            <i class="bi bi-{{ social_icons[network] }}" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            {% endif %}
+        {% endblock %}
+
+        {% block pixzl_footer_copyright_text %}
+            {% if pfe_active %}
+                {% set pfe_value      = config('PixzlFooterEditor.config.PixzlFooterEditorValue') %}
+                {% set pfe_allow_html = config('PixzlFooterEditor.config.PixzlFooterEditorValueAllowHtml') %}
+                <div class="footer-copyright">
+                    <p>
+                        &#169; {{ 'now'|date('Y') }}
+                        {% if pfe_allow_html %}
+                            {{ pfe_value|raw }}
+                        {% else %}
+                            {{ pfe_value }}
+                        {% endif %}
+                        {% if twtLicensekey is defined %}
+                            Theme by {{ 'twt.pixzl'|trans({'%href%': 'https://www.pixzl.de','%title%': 'Shopware Theme','%name%': 'Pixzl'})|raw }}
+                        {% endif %}
+                    </p>
+                </div>
+            {% elseif twtLicensekey is defined %}
+                <div class="footer-copyright">
+                    <p>Theme by {{ 'twt.pixzl'|trans({'%href%': 'https://www.pixzl.de','%title%': 'Shopware Theme','%name%': 'Pixzl'})|raw }}</p>
+                </div>
+            {% endif %}
+        {% endblock %}
+
+        {% block pixzl_footer_payment_icons %}
+            {% if pfe_payment_active %}
+                {% set payment_icons = config('PixzlFooterEditor.config.PixzlFooterEditorPaymentIcons') %}
+                {% if payment_icons and payment_icons is iterable and payment_icons|length > 0 %}
+                    <div class="pixzl-footer-icons-wrapper pixzl-footer-icons-payment">
+                        <div class="pixzl-footer-icons-heading">
+                            {{ 'pixzl-footer.payment.heading'|trans({}, 'messages') }}
+                        </div>
+                        <ul class="pixzl-footer-icons">
+                            {% for icon in payment_icons %}
+                                {% set alt = ('pixzl-footer.payment.alt.' ~ icon)|trans({}, 'messages') %}
+                                <li>
+                                    <span class="pixzl-footer-icon-badge" aria-label="{{ alt }}" title="{{ alt }}">{{ alt }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            {% endif %}
+        {% endblock %}
+
+        {% block pixzl_footer_shipping_icons %}
+            {% if pfe_shipping_active %}
+                {% set shipping_icons = config('PixzlFooterEditor.config.PixzlFooterEditorShippingIcons') %}
+                {% if shipping_icons and shipping_icons is iterable and shipping_icons|length > 0 %}
+                    <div class="pixzl-footer-icons-wrapper pixzl-footer-icons-shipping">
+                        <div class="pixzl-footer-icons-heading">
+                            {{ 'pixzl-footer.shipping.heading'|trans({}, 'messages') }}
+                        </div>
+                        <ul class="pixzl-footer-icons">
+                            {% for icon in shipping_icons %}
+                                {% set alt = ('pixzl-footer.shipping.alt.' ~ icon)|trans({}, 'messages') %}
+                                <li>
+                                    <span class="pixzl-footer-icon-badge" aria-label="{{ alt }}" title="{{ alt }}">{{ alt }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            {% endif %}
+        {% endblock %}
+
+    {% endif %}
 {% endblock %}
